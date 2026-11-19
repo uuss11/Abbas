@@ -332,8 +332,6 @@ details {
     linear-gradient(145deg, rgba(255, 255, 255, .40), transparent 42%),
     var(--card);
   box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, .57);
-  -webkit-backdrop-filter: blur(12px) saturate(125%);
-  backdrop-filter: blur(12px) saturate(125%);
   transition: transform .32s var(--ease-out), box-shadow .32s var(--ease-out), border-color .32s var(--ease-out), background .32s var(--ease-out);
 }
 .card { margin-bottom: 0; }
@@ -454,8 +452,8 @@ details li { padding-inline-start: 2px; }
     margin-bottom: 12px;
     padding: 12px 14px;
     border-radius: 21px;
-    -webkit-backdrop-filter: blur(16px) saturate(135%);
-    backdrop-filter: blur(16px) saturate(135%);
+    -webkit-backdrop-filter: blur(10px) saturate(125%);
+    backdrop-filter: blur(10px) saturate(125%);
   }
   header p { font-size: .83rem; }
   header #lgo { min-height: 38px; padding: 6px 9px !important; font-size: .78rem !important; }

@@ -48,13 +48,17 @@ h2{margin:0 0 6px;font-size:1.15rem;color:var(--lapis)}
 #brC{width:90px;height:90px;border-radius:50%;background:var(--lapis);opacity:.35;margin:12px auto}@media (prefers-reduced-motion:reduce){#brC{transition:none!important}}
 details{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:10px 14px;margin-bottom:10px}summary{font-weight:800;color:var(--lapis);cursor:pointer}details ul{margin:8px 0 0;padding-inline-start:20px}details li{margin-bottom:4px}.big{width:100%;height:90px;font-size:1.4rem}.lt{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:8px 0}.lt .cell{width:40px;height:40px;font-size:1rem}@keyframes fl{to{transform:translateY(-110vh);opacity:0}}.ht{position:fixed;bottom:-30px;font-size:1.6rem;animation:fl 3s linear forwards;pointer-events:none;z-index:9}@media (prefers-reduced-motion:reduce){.ht{display:none}}.tm{font-size:2.2rem;text-align:center;font-weight:800;color:var(--gold)}
 </style>
+<meta name="description" content="مساحة عراقية مرحة تجمع الألعاب والألغاز والشعر والأذكار والدراسة والعناية والمطبخ والعادات اليومية." />
+<meta name="theme-color" content="#f4f2e9" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <div id="gate"><div class="gbox"><div class="gflag">🇮🇶</div><h1>عاش العراق</h1><p id="gs"></p><input id="gname" placeholder="اسمج" maxlength="20" style="max-width:240px;margin:0 auto 8px;text-align:center;display:block"><input id="gp" type="password" inputmode="numeric" placeholder="رمز سري (اختياري)" maxlength="12" style="max-width:240px;margin:0 auto 8px;text-align:center;display:block"><div class="out" id="ge"></div><button class="g" id="gbtn">ادخلي ✨</button><div style="color:var(--soft);font-size:.8rem;margin:12px auto 0;max-width:260px">هالجهاز يتذكرج وتدخلين مباشرة المرة الجاية بدون ما تكتبين شي.</div></div></div>
 <div class="w">
 <header><div class="hd"><h1>🇮🇶 عاش العراق</h1><p id="hi"></p><button id="th" style="margin:6px 0"></button></div><button id="lgo" style="padding:4px 10px;font-size:.8rem;opacity:.75;align-self:flex-start">🚪 خروج</button></header>
 <div class="nm"><input id="nm" placeholder="الاسم" maxlength="20"><button id="setnm" class="g">هلا</button></div>
-<div class="tabs" id="tabs"></div>
+<nav class="tabs" id="tabs" aria-label="أقسام الموقع"></nav>
 
 <section id="home">
  <div class="card"><h2>🏠 أهلًا بيج</h2><div class="out" id="hmD"></div><div class="txt" id="hmQ"></div></div>
@@ -737,6 +741,23 @@ $('rhS').onchange=()=>$('rhO').textContent=RH[$('rhS').value];$('rhO').textConte
 mkquiz('pq2',[['من قائل "على قدر أهل العزم تأتي العزائم"؟',['المتنبي','أحمد شوقي','الشابي'],0],['من صاحب "إذا الشعب يوما أراد الحياة"؟',['أبو القاسم الشابي','المتنبي','حافظ إبراهيم'],0],['من قائل "الأم مدرسة إذا أعددتها"؟',['حافظ إبراهيم','أحمد شوقي','الإمام الشافعي'],0],['من قائل "دع الأيام تفعل ما تشاء"؟',['الإمام الشافعي','المتنبي','أبو فراس'],0],['من قائل "قفا نبك من ذكرى حبيب ومنزل"؟',['امرؤ القيس','عنترة','زهير'],0],['من صاحب "أراك عصي الدمع شيمتك الصبر"؟',['أبو فراس الحمداني','المتنبي','البحتري'],0]]);
 
 
+}
+</script>
+<script>
+// Reveal content only when motion is allowed and the browser supports it.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -36px 0px', threshold: 0.04 });
+  document.querySelectorAll('.card, details').forEach(element => {
+    element.classList.add('reveal');
+    revealObserver.observe(element);
+  });
 }
 </script>
 </body>
